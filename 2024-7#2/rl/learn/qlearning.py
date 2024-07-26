@@ -93,7 +93,7 @@ if __name__ == "__main__":
     )
 
     # train
-    for episode in range(20000):
+    for episode in range(200000):
         state = env.reset()
         action = agent.get_action(state)
         done = False

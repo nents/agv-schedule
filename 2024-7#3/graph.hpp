@@ -1,6 +1,6 @@
 #pragma once
 
-#include "top.h"
+#include "top.hpp"
 
 const int dr[] = {-1, 0, 1, 0};
 const int dc[] = {0, 1, 0, -1};

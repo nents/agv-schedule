@@ -7,10 +7,11 @@
 #include <iostream>
 #include <queue>
 #include <random>
+#include <set>
 #include <string>
 #include <vector>
 
-using std::array, std::queue, std::string, std::vector, std::pair, std::priority_queue;
+using std::array, std::queue, std::string, std::vector, std::pair, std::priority_queue, std::set;
 using std::make_pair;
 
 using std::cout, std::endl, std::cerr, std::ifstream, std::ofstream;
@@ -49,6 +50,7 @@ const string order_file = "order.txt";
 
 const string sa4lowerbound_file = "sa4lowerbound.txt";
 const string sa4lowerbound_path_file = "sa4lowerbound_path.txt";
+const string greedy4simulate_path_file = "greedy4simulate_path.txt";
 
 const int MAX_AGV = 4;
 const int MAX_ORDER = 100;

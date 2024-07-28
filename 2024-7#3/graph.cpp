@@ -1,4 +1,4 @@
-#include "graph.h"
+#include "graph.hpp"
 
 int v2id(int r, int c, int cols) { return r * cols + c; }
 

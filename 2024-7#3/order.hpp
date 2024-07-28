@@ -1,4 +1,6 @@
-#include "top.h"
+#pragma once
+
+#include "top.hpp"
 
 struct Order {
     vector<pii> order;

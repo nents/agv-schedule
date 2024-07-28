@@ -1,4 +1,4 @@
-#include "sa4lowerbound.h"
+#include "sa4lowerbound.hpp"
 
 namespace {
 int argAdjMin(ref<Graph> G, int fromR, int fromC, int toR, int toC) {
@@ -125,6 +125,7 @@ void convert2path(ref<Graph> G, ref<Order> O, ref<vector<int>> schedule) {
             route.push_back(agvRestArea[idx]);
         }
         reverse(route.begin(), route.end());
+        route.push_back(agvRestArea[0]);
         // convert route to path
         vector<pii> path;
         {
@@ -148,10 +149,10 @@ void sa4lowerbound() {
     DEBUG("begin sa4lowerbound");
 
     // constants
-    const int SA_MAX_ITER = 1;
-    const double SA_INIT_T = 5000.0;
+    const int SA_MAX_ITER = 10;
+    const double SA_INIT_T = 150000.0;
     const double eps = 1e-9;
-    const double SA_DELTA_T = 0.997;
+    const double SA_DELTA_T = 0.9997;
 
     // variables
     mt19937 mt(random_device{}());
@@ -172,7 +173,6 @@ void sa4lowerbound() {
     vector<int> schedule(O.orders);
     var gBestSchedule = schedule;
     var gBsetAns = INT_SOFT_MAX;
-    DEBUG("asd");
     for (int times = 0; times < SA_MAX_ITER; times++) {
         var t = SA_INIT_T;
         for (int &v : schedule) { v = randAgv(mt); }
@@ -202,9 +202,12 @@ void sa4lowerbound() {
     for (var v : gBestSchedule) { cerr << v << " "; }
     cerr << endl;
     // output
+    DEBUG("output schedule");
     ofstream fout(sa4lowerbound_file);
     for (var v : gBestSchedule) { fout << v << " "; }
+    fout << endl << "best: " << gBsetAns;
     fout.close();
+
     DEBUG("output path");
     convert2path(G, O, gBestSchedule);
 

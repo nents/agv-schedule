@@ -64,6 +64,7 @@ def create_mp4(map_file, path_file, output_name, fps):
 
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
     video = cv2.VideoWriter(f"output/{output_name}.mp4", fourcc, fps, (width, height))
+    video.set(cv2.VIDEOWRITER_PROP_QUALITY, 100)
     for image in images:
         nparr = np.frombuffer(image.getvalue(), np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)

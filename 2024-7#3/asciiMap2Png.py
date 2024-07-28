@@ -14,7 +14,7 @@ def ascii_to_png(lines):
     colors_map = {
         "X": (240, 0, 0),
         "A": (0, 200, 240),
-        "o": (240, 240, 240),
+        "o": (255, 255, 255),
         ".": (0, 0, 0),
         "P": (255, 128, 50),
     }
@@ -25,7 +25,7 @@ def ascii_to_png(lines):
             draw.rectangle(
                 ((x + 1) * scale, (y + 1) * scale, (x + 2) * scale, (y + 2) * scale),
                 fill=color,
-                outline=(224, 224, 224),
+                outline=(248, 244, 226),
                 width=1,
             )
 
